@@ -19,6 +19,9 @@ None.
 
 * `swapfile_location` [default: `/swapfile`]: the location of where the swapfile will be created
 
+* `swapfile_priority` [default: `0`]: the priority of swapfile:
+    If you have more than one swap file or swap partition you should consider assigning a priority value (0 to 32767) for each swap area. The system will use swap areas of higher priority before using swap areas of lower priority.
+
 ### Optional
 
 The following variables are set to `False` by default and will not have any effect on your hosts. Setting them to any value other than `False` will update your hosts' sysctl.conf file.
