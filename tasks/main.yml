@@ -19,11 +19,11 @@
   when: swapfile_size != false and write_swapfile.changed
 
 - name: Enable swapfile
-  command: swapon {{ swapfile_location }}
+command: swapon -p {{ swapfile_priority }} {{ swapfile_location }}
   when: swapfile_size != false and create_swapfile.changed
 
 - name: Add swapfile to /etc/fstab
-  lineinfile: dest=/etc/fstab line="{{ swapfile_location }}   none    swap    sw    0   0" state=present
+  lineinfile: dest=/etc/fstab line="{{ swapfile_location }}   none    swap    sw,{{ swapfile_priority }}    0   0" state=present
   when: swapfile_size != false
 
 - name: Configure vm.swappiness
